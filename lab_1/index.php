@@ -3,9 +3,9 @@
     mb_internal_encoding('UTF-8'); // кодировка
 	
 	include 'Task_1.php';
-
 	include 'Task_2.php';
-
 	include 'Task_3.php';
-
 	include 'Task_4.php';
+	include 'Task_5.php';
+	include 'Task_6.php';
+	include 'Task_7.php';
