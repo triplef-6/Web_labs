@@ -8,7 +8,7 @@
     $str__n1 = (string) $rand__n1;
     $str__n2 = (string) $rand__n2;
     echo "Первые цифры этих чисел ";
-    if ($str__n1[1] != $str__n2[1]) {
+    if ($str__n1[0] != $str__n2[0]) {
         echo "не ";
     }
     echo "совпадают\n";

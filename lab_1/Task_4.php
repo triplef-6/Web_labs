@@ -6,7 +6,7 @@
     echo "Строка 1: ", $str1, "\n";
     echo "Строка 2: ", $str2, "\n";
 
-    echo "Общая строка: ", $str1 & $str2, "\n";
+    echo "Общая строка: ", $str1 . '&' . $str2, "\n";
     echo "Наибольшая строка: ";
     if (strlen($str1) > strlen($str2)) {  
         echo $str1, "\n";
