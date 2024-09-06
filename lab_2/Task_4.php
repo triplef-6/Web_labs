@@ -9,8 +9,12 @@
 
     $arr2 = [];
     for ($i = 0; $i < 10; $i++) {
-        if (strpos((string) $arr1[$i], '5') != false) {
-            $arr2[] = $arr1[$i];
+        $str = (string) $arr1[$i];
+        for ($j = 0; $j < strlen($str); $j++) {
+            if ($str[$j] == "5") {
+                $arr2[] = $arr1[$i];
+                break;
+            }
         }
     }
     print_r($arr2);
