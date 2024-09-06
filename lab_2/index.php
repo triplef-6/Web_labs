@@ -8,3 +8,9 @@
 	include 'Task_4.php'; // не всегда работает
 	include 'Task_5.php';
 	include 'Task_6.php';
+	include 'Task_7.php';
+	include 'Task_8.php';
+	include 'Task_9.php';
+	include 'Task_10.php';
+	include 'Task_11.php';
+	include 'Task_12.php';
