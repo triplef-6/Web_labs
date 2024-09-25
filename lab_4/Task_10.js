@@ -13,7 +13,8 @@ console.log(arr);
 
 let n = 0;
 for (let a of arr) {
-    if (a < 0) {
+    let str = String(a);
+    if (str.includes("1") != false && a < 0) {
         n++;
     }
 }
