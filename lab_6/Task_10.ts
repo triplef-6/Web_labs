@@ -14,7 +14,7 @@ console.log(arr10);
 let n10 : number = 0;
 for (let a of arr10) {
     let str10 : string = String(a);
-    if (str10.includes("1") != false && a < 0) {
+    if (a < 0) {
         n10++;
     }
 }

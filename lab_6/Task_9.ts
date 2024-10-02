@@ -21,4 +21,4 @@ for (let i = 4; i < 8; i++) {
 }
 console.log(sum91);
 console.log(sum92);
-console.log(sum91 / sum92);
+console.log(sum91 * sum92);
