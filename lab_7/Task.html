@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lab 7</title>
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+                background-color: red;
+            }
+            .circle {
+                width: 100px; 
+                height: 100px;
+                background-color: violet; 
+                border-radius: 50%;
+                position: absolute;
+                left: 100px;
+                top: 100px;
+                transition: all 0.25s ease;
+            }
+            .enlarged {
+                width: 200px;
+                height: 200px;
+                background-color: blue;
+                border-radius: 50%;
+                position: absolute;
+                left: 100px;
+                top: 100px;
+                transition: all 0.25s ease;
+            }
+            .border {
+                border: 5px solid black;
+                background-color: white;
+                border-radius: 50%;
+                position: absolute;
+                left: 100px;
+                top: 100px;
+                transition: all 0.25s ease;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="circle"></div>
+        <script>
+            let click = 0;
+            const circle = document.getElementsByClassName('circle')[0];
+
+            circle.addEventListener('click', () => {
+                click++;
+
+                if (click % 5 == 1) {
+                    circle.classList.add('enlarged');
+                } else if (click % 5 == 2) {
+                    circle.classList.remove('enlarged');
+                   // circle.style.backgroundColor = 'red'; 
+                } else if (click % 5 == 3) {
+                    circle.classList.add('border'); 
+                    // circle.style.backgroundColor = 'white';
+                } else if (click % 5 == 4) {
+                    circle.remove(); 
+                } 
+            });
+        </script>
+    </body>
+</html>
