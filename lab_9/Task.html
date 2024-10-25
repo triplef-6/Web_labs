@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 9</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #c00be0, rgb(0, 0, 0)); /* градиент */
+            font-family: Arial, sans-serif;
+            color: rgb(198, 219, 35);
+        }
+        #clock {
+            text-align: center;
+            font-size: 40px;
+        }
+        #time {
+            text-align: center;
+            font-size: 80px;
+        }
+        select {
+            margin-top: 10px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="clock">
+        <div id="time"></div>
+        <div id="date"></div>
+        <select id="timezone">
+            <option value="0">UTC</option>
+            <option value="3">MSK</option>
+            <option value="6">Omsk</option>
+        </select>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
