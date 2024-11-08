@@ -18,12 +18,25 @@
                 height: 100vh;
                 margin: 0;
             }
+            #startStopButton {
+                padding: 10px 20px;
+                font-size: 25px;
+            }
+            #resetBotton {
+                padding: 10px 20px;
+                font-size: 25px;
+            }
+            
         </style>
     </head>
+    <body style="
+        display: flex;
+        flex-direction: column;
+        "></body>
     <body>
         <div id="stopwatch">00:00:00.000</div>
         <button id="startStopButton" onclick="startStopStopwatch()">Старт</button>
-        <button onclick="resetStopwatch()">Обнулить</button>
+        <button id="resetBotton" onclick="resetStopwatch()">Обнулить</button>
         <script src = "skript.js"></script>
     </body>
 </html>
