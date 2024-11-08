@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lab 10</title>
+        <style>
+            #stopwatch {
+                display: flex;
+                color: black;
+                font-size: 80px;
+            }
+            body {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: darkviolet;
+                height: 100vh;
+                margin: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="stopwatch">00:00:00.000</div>
+        <button id="startStopButton" onclick="startStopStopwatch()">Старт</button>
+        <button onclick="resetStopwatch()">Обнулить</button>
+        <script src = "skript.js"></script>
+    </body>
+</html>
