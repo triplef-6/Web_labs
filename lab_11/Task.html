@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <link rel="stylesheet" type="text/css" href="style.css" /> 
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lab 11</title>
+    </head>
+    <body>
+        <div class="slideshow-container">
+            <img id="slider" src="./source/1.png"></img>
+            <button id="next" onclick=changeNext()>&#10095;</button>
+            <button id="previous" onclick=changePrev()>&#10094;</button> 
+        </div>
+        <div style="text-align:center">
+            <span class="dot active" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+            <span class="dot" onclick="currentSlide(5)"></span>
+            <span class="dot" onclick="currentSlide(6)"></span>
+            <span class="dot" onclick="currentSlide(7)"></span>
+            <span class="dot" onclick="currentSlide(8)"></span>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
