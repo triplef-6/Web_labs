@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Lab 13</title>
+        <style>
+            body {
+                background-color: darkviolet;
+            }
+            #button {
+               height: 50px;
+                width: 66px;
+                font-size: 20px;
+            }
+            .answer {
+                width: 66px;
+                font-size: 20px;
+                /* border: 1px solid black; */
+                cursor: pointer;
+            }
+            .answer:hover {
+                background-color: #7d0e1b
+            }
+            #question {
+                font-size: 25px;
+            }
+            #res {
+                font-size: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="question" data-numb=0></div>
+        <div id="answer1" class="answer" data-is_true=""  onclick=isTrue()></div>
+        <div id="answer2" class="answer" data-is_true="" onclick=isTrue()></div>
+        <div id="answer3" class="answer" data-is_true="" onclick=isTrue()></div>
+        <div id="answer4" class="answer" data-is_true="" onclick=isTrue()></div>
+        <p id="res" data-answer=0></p>
+        <button id="button" onclick=start()>Старт</button>
+    </body>
+    <script type="text/javaScript", src="script.js"></script>
+</html>
