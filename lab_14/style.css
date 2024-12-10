@@ -1,0 +1,40 @@
+#wrapper {
+    align-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    justify-content: center; 
+    align-items: center;
+}
+button {
+    margin-top: 10px;
+    height: 100px;
+    width: 100px;
+    background-color: inherit;
+    background-color: blue;
+    border-radius: 8px;
+}
+body {
+    background-color: darkviolet;
+}
+.puzzle {
+    height: 100px;
+    width: 100px;
+    border: 10px;
+    border-color: black;
+}
+#text_inst {
+    text-align: center;
+    font-size: 40px;
+}
+#text_fbook {
+    text-align: center;
+    font-size: 40px;
+}
+#text_vin {
+    text-align: center;
+    font-size: 40px;
+}
+#text_raund {
+    text-align: center;
+    font-size: 40px;
+}
