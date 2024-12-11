@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <link rel="stylesheet" type="text/css" href="./style.css" /> 
+    <head>
+        <meta charset="UTF-8">
+        <title>Lab 15</title>
+    </head>
+    <body>
+        <div id="game-container">
+            <h1>Быки и Коровы</h1>
+            <p id="rules">?Правила игры?</p>
+            <div id="rules-modal">
+                <p>Цель игры — угадать четырехзначное число без повторяющихся цифр. "Бык" означает правильную цифру на правильном месте, а "Корова" — правильную цифру на неправильном месте. Число отгадано, когда есть 4 быка.</p>
+                <p id="close-modal">Закрыть</p>
+            </div>
+            <input type="text" id="guess-input" maxlength="4" placeholder="Введите число" />
+            <button onclick="makeGuess()">угадать</button>
+            <div id="feedback"></div>
+            <table id="history">
+                <thead>
+                    <tr>
+                        <th>Ход</th>
+                        <th>Число</th>
+                        <th>Быки</th>
+                        <th>Коровы</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <script type="text/javaScript" src="./script.js"></script>
+    </body>
+</html>
