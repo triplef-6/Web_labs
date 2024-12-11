@@ -7,16 +7,19 @@ function fill() {
     let turn = document.getElementById("nothing");
     let fiels = document.getElementsByClassName("puzzle")
     let wrapper = document.getElementById("wrapper");
+    let no_win = true 
 
     if (turn.dataset.turn == 'fbook' && field.dataset.logo == '0') {
         field.src = "./resourses/fbook.png"
         field.dataset.logo = 'fbook'
         turn.dataset.turn = 'inst'
+        no_win = false
     }
     if (turn.dataset.turn == 'inst' && field.dataset.logo == '0') {
         field.src = "./resourses/inst.png"
         field.dataset.logo = 'inst'
         turn.dataset.turn = 'fbook'
+        no_win = false
     }
 
     if (isVictory(fiels)) {
@@ -27,11 +30,11 @@ function fill() {
 
         if (turn.dataset.turn == 'fbook') {
             inst_vin++
-            text_vin.innerText = 'Победил игрок: inst' //+ turn.dataset.turn //+ "\nнажмите в любое место что бы продолжить";
+            text_vin.innerText = 'Победил игрок: inst'
         }
         if (turn.dataset.turn == 'inst') {
             fbook_vin++
-            text_vin.innerText = 'Победил игрок: fbook' //+ turn.dataset.turn //+ "\nнажмите в любое место что бы продолжить";
+            text_vin.innerText = 'Победил игрок: fbook'
         }
         raund++
 
@@ -40,6 +43,16 @@ function fill() {
         text_inst.innerText = 'inst: ' + inst_vin;
 
         // wrapper.remove();
+        newGame()
+        no_win = false
+    }
+    if (no_win) {
+        let text_raund = document.getElementById('text_raund')
+        let text_vin = document.getElementById('text_vin')
+
+        raund++
+        text_raund.innerText = raund;
+        text_vin.innerText = 'Ничья';
         newGame()
     }
 }
