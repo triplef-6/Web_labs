@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <!-- <link rel="stylesheet" type="text/css" href="./style.css" />  -->
+    <head>
+        <meta charset="UTF-8">
+        <title>Lab 18</title>
+    </head>
+    <body>
+        <h1>Таймер</h1>
+        <div>
+            <label>
+                Минуты:
+                <input type="number" id="minutes-input" min="0" value="0">
+            </label>
+            <label>
+                Секунды:
+                <input type="number" id="seconds-input" min="0" max="59" value="0">
+            </label>
+        </div>
+        <div>
+            <span id="timer-display">00:00:00</span>
+        </div>
+        <div>
+            <button id="start-button">Старт</button>
+            <button id="stop-button" disabled>Стоп</button>
+            <button id="reset-button" disabled>Сброс</button>
+        </div>
+        <script type="text/javaScript" src="./script.js"></script>
+    </body>
+</html>
