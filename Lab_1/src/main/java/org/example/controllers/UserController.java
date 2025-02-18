@@ -4,10 +4,7 @@ import org.example.User;
 import org.example.UserRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
@@ -28,9 +25,9 @@ public class UserController {
         return userRepository.getAllUser();
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public User userById(@RequestBody int id) {
+    public User userById(@PathVariable int id) {
         return userRepository.getUserById(id);
     }
 
@@ -54,9 +51,9 @@ public class UserController {
         return ResponseEntity.created(location).body(updateUser);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     @ResponseBody
-    public void delete(@RequestBody int id) {
+    public void delete(@PathVariable  int id) {
         userRepository.delete(id);
     }
 }
