@@ -1,10 +1,10 @@
 package org.example;
 
-import org.springframework.stereotype.Repository;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import org.springframework.stereotype.Repository;
 
 @Repository
 public class UserRepository {
@@ -51,6 +51,19 @@ public class UserRepository {
             }
         }
     }
+
+    public List<Integer> setResult(int id, int res) {
+        for (User u : users) {
+            if (u.getId() == id) {
+                u.setResult(res);
+                return u.getResults();
+            }
+        }
+
+        return null;
+    }
+
+
     // дополните
     private long getNextID(){
         return ++idCounter;

@@ -53,7 +53,13 @@ public class UserController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     @ResponseBody
-    public void delete(@PathVariable  int id) {
+    public void delete(@PathVariable int id) {
         userRepository.delete(id);
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.PATCH)
+    @ResponseBody
+    public List<Integer> setResult(@PathVariable int id, @RequestBody Integer res) {
+        return userRepository.setResult(id, res);
     }
 }
