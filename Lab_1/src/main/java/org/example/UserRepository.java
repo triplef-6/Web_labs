@@ -26,6 +26,16 @@ public class UserRepository {
         return null;
     }
 
+    public User authentication(String name, String surname) {
+        for (User u : users) {
+            if (u.getName().equals(name) && u.getSurname().equals(surname)) {
+                return u;
+            }
+        }
+
+        return null;
+    }
+
     public User create(User user) {
         User newUser = new User((int) getNextID(), user.getName(), user.getSurname());
         users.add(newUser);

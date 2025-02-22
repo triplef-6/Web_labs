@@ -19,16 +19,22 @@ public class UserController {
         this.userRepository = userRepository;
     }
 
-    @RequestMapping(method = RequestMethod.GET)
-    @ResponseBody
-    public List<User> list() {
-        return userRepository.getAllUser();
-    }
+//    @RequestMapping(method = RequestMethod.GET)
+//    @ResponseBody
+//    public List<User> list() {
+//        return userRepository.getAllUser();
+//    }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public User userById(@PathVariable int id) {
         return userRepository.getUserById(id);
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    @ResponseBody
+    public User authentication(@RequestBody String name,@RequestBody String surname) {
+        return userRepository.authentication(name, surname);
     }
 
     @RequestMapping(method = RequestMethod.POST)
