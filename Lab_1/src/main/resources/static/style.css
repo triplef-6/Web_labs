@@ -1,0 +1,22 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: darkviolet;
+    font-family: IBM Plex, sans-serif;
+}
+.cube-button {
+    width: 250px;
+    height: 250px;
+    background-color: orange;
+    border: none;
+    cursor: pointer;
+    font-size: 43px;
+}
+.result {
+    margin-top: 20px;
+    font-size: 24px;
+    text-align: center;
+}
