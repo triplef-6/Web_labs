@@ -6,6 +6,19 @@
         <title>Lab 1</title>
     </head>
     <body>
+        <div>
+            <h3>Аутентификация</h3>
+            <input type="text" id="name" placeholder="Имя">
+            <input type="text" id="surname" placeholder="Фамилия">
+            <button onclick="authenticate()">Войти</button>
+        </div>
+        <div id="user-info" style="display: none;">
+            <h3>Информация о пользователе</h3>
+            <p>Имя: <span id="user-name"></span></p>
+            <p>Фамилия: <span id="user-surname"></span></p>
+            <p>Результаты: <span id="user-results"></span></p>
+            <p>Рекорд: <span id="user-record"></span></p>
+        </div>
         <div class="container">
             <button class="cube-button" onclick="getResultGame()">2048</button>
             <div class="result" id="result"></div>

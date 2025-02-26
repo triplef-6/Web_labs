@@ -1,40 +1,47 @@
 package org.example.controllers;
 
+import java.net.URI;
+import java.util.List;
+
+import org.example.AuthRequest;
 import org.example.User;
 import org.example.UserRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.util.UriComponentsBuilder;
-
-import java.net.URI;
-import java.util.List;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
     private final UserRepository userRepository;
-
-    public UserController(UserRepository userRepository){
+    
+    public UserController(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-
-//    @RequestMapping(method = RequestMethod.GET)
-//    @ResponseBody
-//    public List<User> list() {
-//        return userRepository.getAllUser();
-//    }
+        
+   @RequestMapping(method = RequestMethod.GET)
+   @ResponseBody
+   public List<User> list() {
+       return userRepository.getAllUser();
+   }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public User userById(@PathVariable int id) {
         return userRepository.getUserById(id);
     }
-
-    @RequestMapping(method = RequestMethod.GET)
+    
+    @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     @ResponseBody
-    public User authentication(@RequestBody String name,@RequestBody String surname) {
-        return userRepository.authentication(name, surname);
+    public ResponseEntity<User> authenticate(@RequestBody AuthRequest authRequest) {
+        User user = userRepository.authentication(authRequest.getName(), authRequest.getSurname());
+        return ResponseEntity.ok(user);
     }
 
     @RequestMapping(method = RequestMethod.POST)
@@ -63,9 +70,24 @@ public class UserController {
         userRepository.delete(id);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.PATCH)
+    @RequestMapping(value = "/{id}/results", method = RequestMethod.POST)
     @ResponseBody
-    public List<Integer> setResult(@PathVariable int id, @RequestBody Integer res) {
-        return userRepository.setResult(id, res);
+    public ResponseEntity<?> saveResult(@PathVariable int id, @RequestBody Integer result, @RequestHeader("Authorization") String token) {
+        if (token.equals("dummy-token-for-" + id)) {
+            userRepository.setResult(id, result);
+            return ResponseEntity.ok("Result saved");
+        }
+
+        return ResponseEntity.status(401).body("Unauthorized");
     }
+
+    // private String generateToken(User user) {
+    //     // Implement token generation logic here
+    //     return "dummy-token-for-" + user.getId();
+    // }
+
+    // private boolean isValidToken(String token, int userId) {
+    //     // Implement token validation logic here
+    //     return token.equals("dummy-token-for-" + userId);
+    // }
 }
