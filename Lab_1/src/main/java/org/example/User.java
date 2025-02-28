@@ -22,7 +22,7 @@ public class User {
         this.record = 0;
 
     }
-
+    
     public int getId() {
         return id;
     }

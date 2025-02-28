@@ -39,9 +39,9 @@ public class UserController {
     
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<User> authenticate(@RequestBody AuthRequest authRequest) {
+    public User authenticate(@RequestBody AuthRequest authRequest) {
         User user = userRepository.authentication(authRequest.getName(), authRequest.getSurname());
-        return ResponseEntity.ok(user);
+        return user;
     }
 
     @RequestMapping(method = RequestMethod.POST)
