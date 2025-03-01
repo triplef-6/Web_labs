@@ -73,12 +73,13 @@ public class UserController {
     @RequestMapping(value = "/{id}/results", method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity<?> saveResult(@PathVariable int id, @RequestBody Integer result, @RequestHeader("Authorization") String token) {
-        if (token.equals("dummy-token-for-" + id)) {
+        String tokenFrom = "Bearer dummy-token-for-" + id;
+        if (token.equals(tokenFrom)) {
             userRepository.setResult(id, result);
             return ResponseEntity.ok("Result saved");
         }
 
-        return ResponseEntity.status(401).body("Unauthorized");
+        return ResponseEntity.status(401).body("Unauthorized66666");
     }
 
     // private String generateToken(User user) {

@@ -16,7 +16,7 @@ function authenticate() { // аутентификация
     .then(response => response.json())
     .then(user => {
         if (user) {
-            // authToken = 'dummy-token-for-' + user.id; // Replace with actual token logic
+            authToken = 'dummy-token-for-' + user.id; // Replace with actual token logic
             userId = user.id;
             userResults = user.results || [];
             displayUserInfo(user);
@@ -43,7 +43,7 @@ function getResultGame() { // игра
     document.getElementById('result').innerText = `Результат игры: ${randomNumber}`;
     console.log(randomNumber);
 
-    if (authToken) { // если выполнен вход
+    if (userId != null) { // если выполнен вход
         fetch(`/user/${userId}/results`, {
             method: 'POST',
             headers: {

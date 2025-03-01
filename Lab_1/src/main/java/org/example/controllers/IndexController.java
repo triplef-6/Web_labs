@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class IndexController {
-
     @GetMapping("/game")
     public String index() {
         return "forward:/index.html";

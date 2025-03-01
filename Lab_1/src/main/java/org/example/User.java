@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
@@ -20,7 +21,7 @@ public class User {
         this.name = name;
         this.surname = surname;
         this.record = 0;
-
+        this.results = new ArrayList<>();
     }
     
     public int getId() {
@@ -47,7 +48,7 @@ public class User {
         this.results = results;
     }
 
-    public void setResult(int result) {
+    public void setResult(Integer result) {
         this.results.add(result);
         if (result > record) {
             record = result;
