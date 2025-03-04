@@ -36,12 +36,12 @@ function displayUserInfo(user) { // отображение данных
     document.getElementById('user-record').innerText = user.record;
 }
 
-function getResultGame() { // игра
-    const min = 20;
-    const max = 10000;
-    const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-    document.getElementById('result').innerText = `Результат игры: ${randomNumber}`;
-    console.log(randomNumber);
+function setResultGame(resGame) { // игра
+    // const min = 20;
+    // const max = 10000;
+    // const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+    // document.getElementById('result').innerText = `Результат игры: ${randomNumber}`;
+    // console.log(randomNumber);
 
     if (userId != null) { // если выполнен вход
         fetch(`/user/${userId}/results`, {
@@ -50,7 +50,7 @@ function getResultGame() { // игра
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${authToken}`
             },
-            body: JSON.stringify(randomNumber)
+            body: JSON.stringify(resGame)
         })
         .then(response => response.text())
         .then(message => {

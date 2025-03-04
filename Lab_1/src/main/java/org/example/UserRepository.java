@@ -74,7 +74,6 @@ public class UserRepository {
     }
 
 
-    // дополните
     private long getNextID(){
         return ++idCounter;
     }
