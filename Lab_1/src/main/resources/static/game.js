@@ -251,7 +251,7 @@
                 gameContainer.appendChild(cell);
             }
         }
-        document.getElementById('score').textContent = `Score: ${score}`;
+        document.getElementById('result').textContent = `Результат игры: ${score}`;
     }
 
     function move(direction) {
@@ -370,7 +370,8 @@
             addRandomTile();
             updateBoard();
             if (isGameOver()) {
-                alert(`Game Over! Your score: ${score}`);
+                alert(`Игра окончена. Результат: ${score}`);
+                setResultGame(score);
                 initGame();
             }
         }
@@ -438,15 +439,15 @@ let userId = null;
 let userResults = [];
 
 function registration() {
-    const name = document.getElementById('name_r').value;
-    const surname = document.getElementById('surname_r').value;
+    const name_r = document.getElementById('name_r').value;
+    const surname_r = document.getElementById('surname_r').value;
 
     fetch('/user', {
-        method: 'Post',
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         }, 
-        body: JSON.stringify({ name, surname })
+        body: JSON.stringify({ "name": name_r, "surname": surname_r })
     })
 }
 function authenticate() { // аутентификация
