@@ -437,6 +437,18 @@ let authToken = null;
 let userId = null;
 let userResults = [];
 
+function registration() {
+    const name = document.getElementById('name_r').value;
+    const surname = document.getElementById('surname_r').value;
+
+    fetch('/user', {
+        method: 'Post',
+        headers: {
+            'Content-Type': 'application/json'
+        }, 
+        body: JSON.stringify({ name, surname })
+    })
+}
 function authenticate() { // аутентификация
     const name = document.getElementById('name').value;
     const surname = document.getElementById('surname').value;
