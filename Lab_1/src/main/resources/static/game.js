@@ -503,7 +503,7 @@ function setResultGame(resGame) { // игра
         .then(response => response.text())
         .then(message => {
             console.log(message);
-            userResults.push();
+            userResults.push(resGame);
             document.getElementById('user-results').innerText = userResults.join(', ');
             document.getElementById('user-record').innerText = Math.max(...userResults, 0);
         })
