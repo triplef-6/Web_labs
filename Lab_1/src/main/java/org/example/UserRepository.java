@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.example.entities.User;
 import org.springframework.stereotype.Repository;
 
 @Repository

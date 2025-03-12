@@ -1,12 +1,45 @@
 body {
-    display: flex;
+    font-family: Arial, sans-serif;
+    background-color: #3e3f78;
+    display: grid;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: darkviolet;
-    font-family: IBM Plex, sans-serif;
 }
+
+div {
+    background-color: blue;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+}
+
+h3 {
+    color: #333;
+}
+
+input[type="text"] {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
 .cube-button {
     width: 250px;
     height: 250px;
@@ -21,14 +54,14 @@ body {
     text-align: center;
 }
 
-        .game-container {
+.game-container {
             display: grid;
             grid-template-columns: repeat(3, 100px);
             grid-template-rows: repeat(3, 100px);
             gap: 10px;
             position: relative;
         }
-        .cell {
+.cell {
             width: 100px;
             height: 100px;
             background-color: #ccc;
@@ -39,4 +72,43 @@ body {
             font-weight: bold;
             position: absolute;
             transition: transform 0.1s ease-in-out;
+        }
+        #board {
+            margin: 20px auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 5px;
+        }
+        .tile {
+            background: #ccc0b3;
+            font-size: 2em;
+            line-height: 100px;
+            height: 100px;
+            width: 100px;
+            border-radius: 5px;
+        }
+        .tile-0 {
+            background: #cdc1b4;
+        }
+        /* Стили для панели управления пользователями */
+        #userSection {
+            margin: 20px auto;
+            width: 80%;
+            max-width: 600px;
+            text-align: left;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        table, th, td {
+            border: 1px solid #aaa;
+        }
+        th, td {
+            padding: 5px;
+            text-align: center;
+        }
+        form {
+            margin-bottom: 15px;
         }

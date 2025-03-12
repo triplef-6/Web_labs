@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
-    <link rel="stylesheet" type="text/css" href="style_2.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <head>
         <meta charset="UTF-8">
         <title>Lab 1</title>
@@ -25,12 +25,15 @@
             <p>Результаты: <span id="user-results"></span></p>
             <p>Рекорд: <span id="user-record"></span></p>
         </div>
-        <div class="container">
-            <div class="game-container" id="game-container"></div>
-            <!-- <button class="cube-button" onclick="getResultGame()">2048</button> -->
-            <div class="result" id="result"></div>
+        <div id="gameSection" style="display: none;">
+            <button id="newGameBtn">Новая игра</button>
+            <h2>Счет: <span id="score">0</span></h2>
+            <div id="board"></div>
+            <p id="gameOverMsg" style="color: red; font-weight: bold;"></p>
         </div>
     </body>
-    <!-- <script type="text/javaScript" src="script.js"></script> -->
-    <script type="text/javaScript" src="game.js"></script>
+    <script type="text/javaScript" src="script.js"></script>
+    <script>
+    
+    </script>
 </html>
