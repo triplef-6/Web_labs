@@ -1,7 +1,7 @@
-package org.example.entities;
+package org.example;
 
 public class Game {
-    private int[][] board; // игровое поле 
+    private int[][] board; // игровое поле
     private int score;     // текущий счет
     private boolean gameOver; // статус окончания игры
 
@@ -71,7 +71,7 @@ public class Game {
                 if (i < 2 && board[i][j] == board[i + 1][j]) {
                     return true;
                 }
-                if (j < 2 && board[i][j] == board[i][j + 1]) { 
+                if (j < 2 && board[i][j] == board[i][j + 1]) {
                     return true;
                 }
             }

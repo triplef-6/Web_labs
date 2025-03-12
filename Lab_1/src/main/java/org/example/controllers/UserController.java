@@ -4,8 +4,8 @@ import java.net.URI;
 import java.util.List;
 
 import org.example.UserRepository;
-import org.example.entities.AuthRequest;
-import org.example.entities.User;
+import org.example.AuthRequest;
+import org.example.User;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;

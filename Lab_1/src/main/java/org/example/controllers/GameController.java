@@ -1,8 +1,7 @@
 package org.example.controllers;
 
 import org.example.GameService;
-import org.example.entities.Game;
-import org.example.entities.MoveRequest;
+import org.example.ent.MoveRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

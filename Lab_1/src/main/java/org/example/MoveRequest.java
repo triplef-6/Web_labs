@@ -1,4 +1,4 @@
-package org.example.entities;
+package org.example;
 
 public class MoveRequest {
     private String direction;

@@ -2,7 +2,6 @@ package org.example;
 
 import java.util.Arrays;
 
-import org.example.entities.Game;
 import org.springframework.stereotype.Service;
 
 @Service

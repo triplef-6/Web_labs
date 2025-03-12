@@ -1,4 +1,4 @@
-package org.example.entities;
+package org.example;
 
 public class AuthRequest {
         private String name;
