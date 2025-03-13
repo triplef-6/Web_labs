@@ -6,18 +6,21 @@
         <title>Lab 1</title>
     </head>
     <body>
+        <!--регистрация-->
         <div>
             <h3>Регистрация</h3>
             <input type="text" id="name_r" placeholder="Имя">
             <input type="text" id="surname_r" placeholder="Фамилия">
             <button onclick="registration()">Зарегистрироваться</button>
         </div>
+        <!--аутентификация-->
         <div>
             <h3>Аутентификация</h3>
             <input type="text" id="name" placeholder="Имя">
             <input type="text" id="surname" placeholder="Фамилия">
             <button onclick="authenticate()">Войти</button>
         </div>
+        <!--Информация о пользователе-->
         <div id="user-info" style="display: none;">
             <h3>Информация о пользователе</h3>
             <p>Имя: <span id="user-name"></span></p>
@@ -25,6 +28,7 @@
             <p>Результаты: <span id="user-results"></span></p>
             <p>Рекорд: <span id="user-record"></span></p>
         </div>
+        <!--игра-->
         <div id="gameSection" style="display: none;">
             <button id="newGameBtn">Новая игра</button>
             <h2>Счет: <span id="score">0</span></h2>
@@ -33,7 +37,4 @@
         </div>
     </body>
     <script type="text/javaScript" src="script.js"></script>
-    <script>
-    
-    </script>
 </html>

@@ -1,7 +1,7 @@
 let authToken = null; // токен
 let userId = null; // id 
 let userResults = []; // локальный список рузультатов
-let gameState = null;
+let gameState = null; // игра
 
 function registration() { // регистрация
     const name_r = document.getElementById('name_r').value;
@@ -41,7 +41,6 @@ function authenticate() { // аутентификация
     })
     .catch(error => console.error('Ошибка:', error));
 }
-
 function displayUserInfo(user) { // отображение данных
     document.getElementById('user-info').style.display = 'block';
     document.getElementById('user-name').innerText = user.name;
@@ -50,7 +49,7 @@ function displayUserInfo(user) { // отображение данных
     document.getElementById('user-record').innerText = user.record;
 }
 
-function setResultGame(resGame) { // 
+function setResultGame(resGame) { // запись результатов игры
     if (authToken) { // если выполнен вход
         fetch(`/user/${userId}/results`, {
             method: 'POST',
@@ -70,62 +69,72 @@ function setResultGame(resGame) { //
         .catch(error => console.error('Ошибка:', error));
     }
 }
+
 function startNewGame() { // старт игры
-        if (authToken && gameState && gameState.score > 0) { // Если есть активная игра — обновляем рекорд перед запуском новой игры
-            setResultGame(gameState.score);
-        }
-        fetch('/game/new', { method: 'POST' })
-            .then(response => response.json())
-            .then(data => {
-                gameState = data;
-                updateBoard();
-            });
+    if (authToken && gameState && gameState.score > 0) { // Если есть активная игра — обновляем рекорд перед запуском новой игры
+        setResultGame(gameState.score);
     }
-    function move(direction) {
-        if (!authToken) {
-            alert('Сначала выполните вход!');
-            return;
-        }
-        fetch('/game/move', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ direction: direction })
-        })
-            .then(response => response.json())
-            .then(data => {
+    fetch('/game/new', { method: 'POST' })
+        .then(response => response.json())
+        .then(data => {
             gameState = data;
             updateBoard();
-            // Если игра окончена
-            if (gameState.gameOver && authToken) {
-                setResultGame(gameState.score);
-            }
         });
+}
+function move(direction) { // изменения доски
+    if (!authToken) {
+        alert('Сначала выполните вход!');
+        return;
     }
-
-    function updateBoard() {
-        const boardDiv = document.getElementById('board');
-        boardDiv.innerHTML = '';
-        for (let i = 0; i < 3; i++) {
-            for (let j = 0; j < 3; j++) {
-                const tileValue = gameState.board[i][j];
-                const tileDiv = document.createElement('div');
-                tileDiv.className = 'tile tile-' + tileValue;
-                tileDiv.textContent = tileValue !== 0 ? tileValue : '';
-                boardDiv.appendChild(tileDiv);
-            }
-        }
-        document.getElementById('score').textContent = gameState.score;
-        document.getElementById('gameOverMsg').textContent = gameState.gameOver ? "Игра окончена!" : "";
-    }
-
-    // Обработка нажатий клавиш — ходы выполняются только если пользователь залогинен
-    document.addEventListener('keydown', function(event) {
-        if (!authToken || !gameState || gameState.gameOver) return;
-        switch (event.key) {
-            case 'ArrowUp': move("up"); break;
-            case 'ArrowDown': move("down"); break;
-            case 'ArrowLeft': move("left"); break;
-            case 'ArrowRight': move("right"); break;
+    fetch('/game/move', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ direction: direction })
+    })
+        .then(response => response.json())
+        .then(data => {
+        gameState = data;
+        updateBoard();
+        // Если игра окончена
+        if (gameState.gameOver && authToken) {
+            setResultGame(gameState.score);
         }
     });
+}
+function updateBoard() { // обновление доски
+    const boardDiv = document.getElementById('board');
+    boardDiv.innerHTML = '';
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            const tileValue = gameState.board[i][j];
+            const tileDiv = document.createElement('div');
+            tileDiv.className = 'tile tile-' + tileValue;
+            tileDiv.textContent = tileValue !== 0 ? tileValue : '';
+            boardDiv.appendChild(tileDiv);
+        }
+    }
+    document.getElementById('score').textContent = gameState.score;
+    document.getElementById('gameOverMsg').textContent = gameState.gameOver ? "Игра окончена!" : "";
+}
+document.addEventListener('keydown', function(event) { // обработка клавишь
+    if (!authToken || !gameState || gameState.gameOver) return;
+        switch (event.key) {
+            case 'ArrowUp': {
+                move("up");
+                break;
+            }
+            case 'ArrowDown': {
+                move("down"); 
+                break;
+            }
+            case 'ArrowLeft': {
+                move("left"); 
+                break;
+            }
+            case 'ArrowRight': {
+                move("right"); 
+                break;
+            }
+    }
+});
 document.getElementById('newGameBtn').addEventListener('click', startNewGame);
