@@ -1,15 +1,15 @@
 package org.example;
 
 public class Game {
-    private int[][] board; // игровое поле
-    private int score;     // текущий счет
-    private boolean gameOver; // статус окончания игры
+    private int[][] board; 
+    private int score;     
+    private boolean gameOver; 
 
     public Game() {
         board = new int[3][3];
         score = 0;
         gameOver = false;
-        // При старте игры генерируем 2 стартовые плитки
+
         generateNewTile();
         generateNewTile();
     }
@@ -33,7 +33,6 @@ public class Game {
         this.gameOver = gameOver;
     }
 
-    // Генерирует новую плитку (2 или 4) в случайной пустой ячейке
     public void generateNewTile() {
         int emptyCells = 0;
         for (int i = 0; i < 3; i++) {
@@ -61,7 +60,6 @@ public class Game {
         }
     }
 
-    // Проверка возможности совершения хода (есть ли пустые ячейки или слияния)
     public boolean canMove() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {

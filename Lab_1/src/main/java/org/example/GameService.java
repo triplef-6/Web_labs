@@ -8,18 +8,20 @@ import org.springframework.stereotype.Service;
 public class GameService {
     private Game currentGame;
 
-    // Создание новой игры
     public Game startNewGame() {
         currentGame = new Game();
         return currentGame;
     }
 
-    // Получение текущего состояния игры
     public Game getCurrentGame() {
         return currentGame;
     }
 
-    // Обработка хода (direction: "up", "down", "left", "right")
+    /**
+     * изменения в игре
+     * @param direction "up", "down", "left", "right"
+     * @return обновлённая игра
+     */
     public Game move(String direction) {
         if (currentGame == null || currentGame.isGameOver()) {
             return currentGame; // если игра не начата или окончена
@@ -47,9 +49,10 @@ public class GameService {
         }
         return currentGame;
     }
-
-    // Реализация движения влево – по каждой строке
-    private boolean moveLeft() {
+    /**
+     * влево
+     */
+    private boolean moveLeft() { 
         boolean moved = false;
         int[][] board = currentGame.getBoard();
         for (int i = 0; i < 3; i++) {
@@ -63,8 +66,10 @@ public class GameService {
         return moved;
     }
 
-    // Движение вправо – переворачиваем строку, обрабатываем, затем переворачиваем обратно
-    private boolean moveRight() {
+    /**
+     * вправо
+     */
+    private boolean moveRight() { 
         boolean moved = false;
         int[][] board = currentGame.getBoard();
         for (int i = 0; i < 3; i++) {
@@ -80,7 +85,9 @@ public class GameService {
         return moved;
     }
 
-    // Движение вверх – обрабатываем каждый столбец
+    /**
+     * вверх
+     */
     private boolean moveUp() {
         boolean moved = false;
         int[][] board = currentGame.getBoard();
@@ -101,7 +108,9 @@ public class GameService {
         return moved;
     }
 
-    // Движение вниз – обрабатываем каждый столбец, переворачиваем его, обрабатываем и переворачиваем обратно
+    /**
+     * вниз
+     */
     private boolean moveDown() {
         boolean moved = false;
         int[][] board = currentGame.getBoard();
@@ -123,18 +132,18 @@ public class GameService {
         }
         return moved;
     }
-
-    // Сдвиг и слияние в одном ряду/столбце
+    /**
+     * слияние
+     */
     private int[] mergeAndShift(int[] line) {
         int[] filtered = new int[3];
         int index = 0;
-        // Убираем нули
+
         for (int i = 0; i < 3; i++) {
             if (line[i] != 0) {
                 filtered[index++] = line[i];
             }
         }
-        // Слияние соседних одинаковых плиток
         for (int i = 0; i < 2; i++) {
             if (filtered[i] != 0 && filtered[i] == filtered[i + 1]) {
                 filtered[i] *= 2;
@@ -143,7 +152,6 @@ public class GameService {
                 i++;
             }
         }
-        // Сдвиг после слияния
         int[] result = new int[3];
         index = 0;
         for (int i = 0; i < 3; i++) {
@@ -154,7 +162,9 @@ public class GameService {
         return result;
     }
 
-    // Метод для разворота массива
+    /**
+     * разворот
+     */
     private void reverseArray(int[] arr) {
         int n = arr.length;
         for (int i = 0; i < n / 2; i++) {
