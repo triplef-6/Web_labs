@@ -3,9 +3,9 @@ package org.example.controllers;
 import java.net.URI;
 import java.util.List;
 
-import org.example.UserRepository;
 import org.example.AuthRequest;
 import org.example.User;
+import org.example.UserRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -66,15 +66,20 @@ public class UserController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     @ResponseBody
-    public void delete(@PathVariable int id) {
-        userRepository.delete(id);
+    public ResponseEntity<?> delete(@PathVariable int id, @RequestHeader("Authorization") String token) {
+        String tokenfrom = "Bearer dummy-token-for-" + id;
+        if (token.equals(tokenfrom)) {
+            userRepository.delete(id);
+            return ResponseEntity.ok("User deleted");
+        }
+        return ResponseEntity.status(401).body("Unauthorized66666");
     }
 
     @RequestMapping(value = "/{id}/results", method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity<?> saveResult(@PathVariable int id, @RequestBody Integer result, @RequestHeader("Authorization") String token) {
-        String tokenFrom = "Bearer dummy-token-for-" + id;
-        if (token.equals(tokenFrom)) {
+        String tokenfrom = "bearer dummy-token-for-" + id;
+        if (token.equals(tokenfrom)) {
             userRepository.setResult(id, result);
             return ResponseEntity.ok("Result saved");
         }

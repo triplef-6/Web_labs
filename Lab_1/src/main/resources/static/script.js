@@ -48,6 +48,27 @@ function displayUserInfo(user) { // отображение данных
     document.getElementById('user-results').innerText = userResults.join(', ');
     document.getElementById('user-record').innerText = user.record;
 }
+function deleteUser() {
+    if (authToken) {
+        fetch(`/user/${userId}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${authToken}`
+            },
+        })
+        .then(response => response.text())
+        .then(message => {
+            alert('Пользователь удалён');
+            console.log(message);
+            userId = null;
+            authToken = null;
+            userResults =[];
+            document.getElementById('user-info').style.display = 'none';
+        })
+        .catch(error => console.error('Ошибка:', error));
+    }
+}
 
 function setResultGame(resGame) { // запись результатов игры
     if (authToken) { // если выполнен вход
