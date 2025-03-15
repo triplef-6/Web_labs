@@ -78,7 +78,7 @@ public class UserController {
     @RequestMapping(value = "/{id}/results", method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity<?> saveResult(@PathVariable int id, @RequestBody Integer result, @RequestHeader("Authorization") String token) {
-        String tokenfrom = "bearer dummy-token-for-" + id;
+        String tokenfrom = "Bearer dummy-token-for-" + id;
         if (token.equals(tokenfrom)) {
             userRepository.setResult(id, result);
             return ResponseEntity.ok("Result saved");

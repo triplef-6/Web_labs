@@ -14,6 +14,9 @@ function registration() { // регистрация
         }, 
         body: JSON.stringify({ "name": name_r, "surname": surname_r })
     })
+    // .then(response => response.text())
+    .then(alert('Регистрация успешна'))
+    .catch(error => console.error('Ошибка:', error));
 }
 function authenticate() { // аутентификация
     const name = document.getElementById('name').value;
@@ -92,9 +95,6 @@ function setResultGame(resGame) { // запись результатов игр�
 }
 
 function startNewGame() { // старт игры
-    if (authToken && gameState && gameState.score > 0) { // Если есть активная игра — обновляем рекорд перед запуском новой игры
-        setResultGame(gameState.score);
-    }
     fetch('/game/new', { method: 'POST' })
         .then(response => response.json())
         .then(data => {
